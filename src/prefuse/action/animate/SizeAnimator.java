@@ -10,27 +10,30 @@ import prefuse.visual.VisualItem;
  */
 public class SizeAnimator extends ItemAction {
 
-    /**
-     * Create a new SizeAnimator that processes all data groups.
-     */
-    public SizeAnimator() {
-        super();
-    }
-    
-    /**
-     * Create a new SizeAnimator that processes the specified group.
-     * @param group the data group to process.
-     */
-    public SizeAnimator(String group) {
-        super(group);
-    }
+  /**
+   * Create a new SizeAnimator that processes all data groups.
+   */
+  public SizeAnimator() {
+    super();
+  }
 
-    /**
-     * @see prefuse.action.ItemAction#process(prefuse.visual.VisualItem, double)
-     */
-    public void process(VisualItem item, double frac) {
-        double ss = item.getStartSize();
-        item.setSize(ss + frac*(item.getEndSize() - ss));       
-    }
+  /**
+   * Create a new SizeAnimator that processes the specified group.
+   * 
+   * @param group
+   *          the data group to process.
+   */
+  public SizeAnimator(String group) {
+    super(group);
+  }
+
+  /**
+   * @see prefuse.action.ItemAction#process(prefuse.visual.VisualItem, double)
+   */
+  @Override
+  public void process(VisualItem item, double frac) {
+    double ss = item.getStartSize();
+    item.setSize(ss + frac * (item.getEndSize() - ss));
+  }
 
 } // end of class SizeAnimator

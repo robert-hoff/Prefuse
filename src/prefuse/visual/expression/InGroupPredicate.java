@@ -13,55 +13,62 @@ import prefuse.visual.VisualItem;
  * @author <a href="http://jheer.org">jeffrey heer</a>
  */
 public class InGroupPredicate extends GroupExpression implements Predicate {
-    
-    /**
-     * Create a new InGroupPredicate.
-     */
-    public InGroupPredicate() {
-    }
-    
-    /**
-     * Create a new InGroupPredicate.
-     * @param group @param group the data group name to use as a parameter
-     */
-    public InGroupPredicate(String group) {
-        super(group);
-    }
-    
-    /**
-     * @see prefuse.data.expression.Expression#get(prefuse.data.Tuple)
-     */
-    public Object get(Tuple t) {
-        return getBoolean(t) ? Boolean.TRUE : Boolean.FALSE;
-    }
-    
-    /**
-     * @see prefuse.data.expression.Expression#getBoolean(prefuse.data.Tuple)
-     */
-    public boolean getBoolean(Tuple t) {
-        if ( !(t instanceof VisualItem) )
-            return false;
-        
-        String group = getGroup(t);
-        if ( group == null ) {
-            return false;
-        }
-        VisualItem item = (VisualItem)t;
-        return item.getVisualization().isInGroup(item, group);
+
+  /**
+   * Create a new InGroupPredicate.
+   */
+  public InGroupPredicate() {
+  }
+
+  /**
+   * Create a new InGroupPredicate.
+   * 
+   * @param group
+   *          @param group the data group name to use as a parameter
+   */
+  public InGroupPredicate(String group) {
+    super(group);
+  }
+
+  /**
+   * @see prefuse.data.expression.Expression#get(prefuse.data.Tuple)
+   */
+  @Override
+  public Object get(Tuple t) {
+    return getBoolean(t) ? Boolean.TRUE : Boolean.FALSE;
+  }
+
+  /**
+   * @see prefuse.data.expression.Expression#getBoolean(prefuse.data.Tuple)
+   */
+  @Override
+  public boolean getBoolean(Tuple t) {
+    if (!(t instanceof VisualItem)) {
+      return false;
     }
 
-    /**
-     * @see prefuse.data.expression.Function#getName()
-     */
-    public String getName() {
-        return "INGROUP";
+    String group = getGroup(t);
+    if (group == null) {
+      return false;
     }
+    VisualItem item = (VisualItem) t;
+    return item.getVisualization().isInGroup(item, group);
+  }
 
-    /**
-     * @see prefuse.data.expression.Expression#getType(prefuse.data.Schema)
-     */
-    public Class getType(Schema s) {
-        return boolean.class;
-    }
-    
+  /**
+   * @see prefuse.data.expression.Function#getName()
+   */
+  @Override
+  public String getName() {
+    return "INGROUP";
+  }
+
+  /**
+   * @see prefuse.data.expression.Expression#getType(prefuse.data.Schema)
+   */
+  @Override
+  public Class getType(Schema s) {
+    return boolean.class;
+  }
+
 } // end of class InGroupPredicate

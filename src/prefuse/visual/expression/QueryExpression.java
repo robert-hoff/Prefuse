@@ -15,44 +15,49 @@ import prefuse.visual.VisualItem;
  */
 public class QueryExpression extends GroupExpression {
 
-    /**
-     * Create a new QueryExpression.
-     */
-    public QueryExpression() {
-        super();
-    }
-    
-    /**
-     * Create a new QueryExpression.
-     * @param group @param group the data group name to use as a parameter
-     */
-    public QueryExpression(String group) {
-        super(group);
-    }
-    
-    /**
-     * @see prefuse.data.expression.Function#getName()
-     */
-    public String getName() {
-        return "QUERY";
-    }
+  /**
+   * Create a new QueryExpression.
+   */
+  public QueryExpression() {
+    super();
+  }
 
-    /**
-     * @see prefuse.data.expression.Expression#getType(prefuse.data.Schema)
-     */
-    public Class getType(Schema s) {
-        return String.class;
-    }
-    
-    /**
-     * @see prefuse.data.expression.Expression#get(prefuse.data.Tuple)
-     */
-    public Object get(Tuple t) {
-        VisualItem item = (VisualItem)t;
-        Visualization vis = item.getVisualization();
-        String group = getGroup(t);
-        SearchTupleSet sts = (SearchTupleSet)vis.getGroup(group);
-        return sts.getQuery();
-    }
+  /**
+   * Create a new QueryExpression.
+   * 
+   * @param group
+   *          @param group the data group name to use as a parameter
+   */
+  public QueryExpression(String group) {
+    super(group);
+  }
+
+  /**
+   * @see prefuse.data.expression.Function#getName()
+   */
+  @Override
+  public String getName() {
+    return "QUERY";
+  }
+
+  /**
+   * @see prefuse.data.expression.Expression#getType(prefuse.data.Schema)
+   */
+  @Override
+  public Class getType(Schema s) {
+    return String.class;
+  }
+
+  /**
+   * @see prefuse.data.expression.Expression#get(prefuse.data.Tuple)
+   */
+  @Override
+  public Object get(Tuple t) {
+    VisualItem item = (VisualItem) t;
+    Visualization vis = item.getVisualization();
+    String group = getGroup(t);
+    SearchTupleSet sts = (SearchTupleSet) vis.getGroup(group);
+    return sts.getQuery();
+  }
 
 } // end of class QueryExpression

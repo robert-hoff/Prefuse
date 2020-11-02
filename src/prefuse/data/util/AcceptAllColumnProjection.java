@@ -9,12 +9,15 @@ import prefuse.data.column.Column;
  */
 public class AcceptAllColumnProjection extends AbstractColumnProjection {
 
-    /**
-     * Always returns true, accepting all columns.
-     * @see prefuse.data.util.ColumnProjection#include(prefuse.data.column.Column, java.lang.String)
-     */
-    public boolean include(Column col, String name) {
-        return true;
-    }
+  /**
+   * Always returns true, accepting all columns.
+   * 
+   * @see prefuse.data.util.ColumnProjection#include(prefuse.data.column.Column,
+   *      java.lang.String)
+   */
+  @Override
+  public boolean include(Column col, String name) {
+    return true;
+  }
 
 } // end of class AcceptAllColumnProjection

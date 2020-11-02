@@ -12,27 +12,32 @@ import prefuse.action.Action;
  */
 public class QualityControlAnimator extends Action {
 
-    /**
-     * @see prefuse.action.Action#run(double)
-     */
-    public void run(double frac) {
-        if ( m_vis == null ) return;
-        if ( frac == 0.0 || frac == 1.0 ) {
-            boolean quality = frac >= 1.0;
-            for ( int i=0; i<m_vis.getDisplayCount(); ++i ) {
-                m_vis.getDisplay(i).setHighQuality(quality);
-            }
-            qualityValue(quality);
-        }
+  /**
+   * @see prefuse.action.Action#run(double)
+   */
+  @Override
+  public void run(double frac) {
+    if (m_vis == null) {
+      return;
     }
-    
-    /**
-     * Callback procedure that subclasses can override to execute
-     * custom quality control measures.
-     * @param quality true if high quality is desired, false otherwise
-     */
-    protected void qualityValue(boolean quality) {
-        // do nothing
+    if (frac == 0.0 || frac == 1.0) {
+      boolean quality = frac >= 1.0;
+      for (int i = 0; i < m_vis.getDisplayCount(); ++i) {
+        m_vis.getDisplay(i).setHighQuality(quality);
+      }
+      qualityValue(quality);
     }
+  }
+
+  /**
+   * Callback procedure that subclasses can override to execute custom quality
+   * control measures.
+   * 
+   * @param quality
+   *          true if high quality is desired, false otherwise
+   */
+  protected void qualityValue(boolean quality) {
+    // do nothing
+  }
 
 } // end of class QualityControlAnimator

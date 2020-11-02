@@ -11,39 +11,42 @@ package prefuse.data;
  */
 public interface Edge extends Tuple {
 
-    /**
-     * Returns the graph of which this Edge is a member.
-     * @return the Graph containing this Edge
-     */
-    public Graph getGraph();
-    
-    /**
-     * Indicates if this edge is directed or undirected.
-     * @return true if directed, false if undirected.
-     */
-    public boolean isDirected();
-    
-    /**
-     * Returns the first, or source, node upon which this Edge
-     * is incident.
-     * @return the source Node
-     */
-    public Node getSourceNode();
-    
-    /**
-     * Returns the second, or target, node upon which this Edge
-     * is incident.
-     * @return the source Node
-     */
-    public Node getTargetNode();
-    
-    /**
-     * Given a Node upon which this Edge is incident, the opposite incident
-     * Node is returned. Throws an exception if the input node is not incident
-     * on this Edge.
-     * @param n a Node upon which this Edge is incident
-     * @return the other Node touched by this Edge
-     */
-    public Node getAdjacentNode(Node n);
-    
+  /**
+   * Returns the graph of which this Edge is a member.
+   * 
+   * @return the Graph containing this Edge
+   */
+  public Graph getGraph();
+
+  /**
+   * Indicates if this edge is directed or undirected.
+   * 
+   * @return true if directed, false if undirected.
+   */
+  public boolean isDirected();
+
+  /**
+   * Returns the first, or source, node upon which this Edge is incident.
+   * 
+   * @return the source Node
+   */
+  public Node getSourceNode();
+
+  /**
+   * Returns the second, or target, node upon which this Edge is incident.
+   * 
+   * @return the source Node
+   */
+  public Node getTargetNode();
+
+  /**
+   * Given a Node upon which this Edge is incident, the opposite incident Node is
+   * returned. Throws an exception if the input node is not incident on this Edge.
+   * 
+   * @param n
+   *          a Node upon which this Edge is incident
+   * @return the other Node touched by this Edge
+   */
+  public Node getAdjacentNode(Node n);
+
 } // end of interface Edge

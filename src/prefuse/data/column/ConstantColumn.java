@@ -10,72 +10,85 @@ import prefuse.data.event.ColumnListener;
  */
 public class ConstantColumn extends AbstractColumn {
 
-    private int m_size;
+  private int m_size;
 
-    /**
-     * Create a new ConstantColumn.
-     * @param type the data type of this column
-     * @param defaultValue the default value used for all rows
-     */
-    public ConstantColumn(Class type, Object defaultValue) {
-        super(type, defaultValue);
-    }
-    
-    /**
-     * @see prefuse.data.column.Column#getRowCount()
-     */
-    public int getRowCount() {
-        return m_size+1;
-    }
+  /**
+   * Create a new ConstantColumn.
+   * 
+   * @param type
+   *          the data type of this column
+   * @param defaultValue
+   *          the default value used for all rows
+   */
+  public ConstantColumn(Class type, Object defaultValue) {
+    super(type, defaultValue);
+  }
 
-    /**
-     * @see prefuse.data.column.Column#setMaximumRow(int)
-     */
-    public void setMaximumRow(int nrows) {
-        m_size = nrows;
-    }
+  /**
+   * @see prefuse.data.column.Column#getRowCount()
+   */
+  @Override
+  public int getRowCount() {
+    return m_size + 1;
+  }
 
-    /**
-     * @see prefuse.data.column.Column#get(int)
-     */
-    public Object get(int row) {
-        if ( row < 0 || row > m_size ) {
-            throw new IllegalArgumentException("Row index out of bounds: "+row);
-        }
-        return super.m_defaultValue;
-    }
+  /**
+   * @see prefuse.data.column.Column#setMaximumRow(int)
+   */
+  @Override
+  public void setMaximumRow(int nrows) {
+    m_size = nrows;
+  }
 
-    /**
-     * Unsupported operation.
-     * @see prefuse.data.column.Column#set(java.lang.Object, int)
-     */
-    public void set(Object val, int row) throws DataTypeException {
-        throw new UnsupportedOperationException(
-                "Can't set values on a ConstantColumn");
+  /**
+   * @see prefuse.data.column.Column#get(int)
+   */
+  @Override
+  public Object get(int row) {
+    if (row < 0 || row > m_size) {
+      throw new IllegalArgumentException("Row index out of bounds: " + row);
     }
+    return super.m_defaultValue;
+  }
 
-    /**
-     * Returns false.
-     * @see prefuse.data.column.Column#canSet(java.lang.Class)
-     */
-    public boolean canSet(Class type) {
-        return false;
-    }    
-    
-    /**
-     * Does nothing.
-     * @see prefuse.data.column.Column#addColumnListener(prefuse.data.event.ColumnListener)
-     */
-    public void addColumnListener(ColumnListener listener) {
-        return; // column can't change, so nothing to listen to
-    }
+  /**
+   * Unsupported operation.
+   * 
+   * @see prefuse.data.column.Column#set(java.lang.Object, int)
+   */
+  @Override
+  public void set(Object val, int row) throws DataTypeException {
+    throw new UnsupportedOperationException("Can't set values on a ConstantColumn");
+  }
 
-    /**
-     * Does nothing.
-     * @see prefuse.data.column.Column#removeColumnListener(prefuse.data.event.ColumnListener)
-     */
-    public void removeColumnListener(ColumnListener listener) {
-        return; // column can't change, so nothing to listen to
-    }
-    
+  /**
+   * Returns false.
+   * 
+   * @see prefuse.data.column.Column#canSet(java.lang.Class)
+   */
+  @Override
+  public boolean canSet(Class type) {
+    return false;
+  }
+
+  /**
+   * Does nothing.
+   * 
+   * @see prefuse.data.column.Column#addColumnListener(prefuse.data.event.ColumnListener)
+   */
+  @Override
+  public void addColumnListener(ColumnListener listener) {
+    return; // column can't change, so nothing to listen to
+  }
+
+  /**
+   * Does nothing.
+   * 
+   * @see prefuse.data.column.Column#removeColumnListener(prefuse.data.event.ColumnListener)
+   */
+  @Override
+  public void removeColumnListener(ColumnListener listener) {
+    return; // column can't change, so nothing to listen to
+  }
+
 } // end of class Constant Column

@@ -8,26 +8,24 @@ package prefuse.util.collections;
  */
 public interface FloatIntSortedMap extends IntSortedMap {
 
-    public float firstKey();
+  public float firstKey();
 
-    public float lastKey();
+  public float lastKey();
 
-    public boolean containsKey(float key);
-    
-    public IntIterator valueRangeIterator(float fromKey, boolean fromInc, 
-                                          float toKey,   boolean toInc);
-    
-    public LiteralIterator keyIterator();
+  public boolean containsKey(float key);
 
-    public LiteralIterator keyRangeIterator(float fromKey, boolean fromInc, 
-                                            float toKey,   boolean toInc);
+  public IntIterator valueRangeIterator(float fromKey, boolean fromInc, float toKey, boolean toInc);
 
-    public int get(float key);
+  public LiteralIterator keyIterator();
 
-    public int remove(float key);
-    
-    public int remove(float key, int value);
+  public LiteralIterator keyRangeIterator(float fromKey, boolean fromInc, float toKey, boolean toInc);
 
-    public int put(float key, int value);
-    
+  public int get(float key);
+
+  public int remove(float key);
+
+  public int remove(float key, int value);
+
+  public int put(float key, int value);
+
 } // end of interface FloatIntSortedMap
